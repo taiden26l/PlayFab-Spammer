@@ -60,3 +60,15 @@ def _GetURL(methodUrl, getParams):
     return "".join(url)
 
 PlayFabSettings.GetURL = _GetURL
+
+
+
+
+
+
+
+
+https://github.com/PlayFab/PythonSdk/blob/master/playfab/PlayFabMatchmakerAPI.py
+https://github.com/PlayFab/PythonSdk/blob/master/playfab/PlayFabClientAPI.py
+https://github.com/PlayFab/PythonSdk/blob/master/playfab/PlayFabHTTP.py
+https://github.com/PlayFab/PythonSdk/blob/master/playfab/PlayFabSettings.py
