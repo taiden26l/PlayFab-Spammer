@@ -25,6 +25,7 @@ def spam():
         RES = requests.post(URL, headers={"Content-Type": "application/json"}, json=DATA)
         RAND2 = ''.join(random.choice(CHARS) for _ in range(8))
         DATA2 = {
+            "TitleId": TITLE,
             "CustomId": RAND2,
             "DisplayName": RAND2,
             "CreateAccount": True
