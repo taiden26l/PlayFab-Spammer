@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 print("PlayFab Spammer made by, @.index | https://discord.gg/GSWSahAmVU")
 
-TITLE = "23A5D"
+TITLE = "83BF3"
 COUNT = 5 # ~ 10K Users (with 16 cores) # (os.cpu_count() * 100 * COUNT will be result)
 CHARS = string.ascii_letters + string.digits
 URL = f"https://{TITLE}.playfabapi.com/Client/RegisterPlayFabUser"
@@ -43,4 +43,4 @@ with ThreadPoolExecutor(max_workers=os.cpu_count() * 100) as executor:
     futures_list = [executor.submit(spam) for _ in range(os.cpu_count() * 100)]
     for future in as_completed(futures_list):
         SUCCESS += future.result()
-print(SUCCESS)
+print(SUCCESS + " (likely /2)")
