@@ -20,35 +20,7 @@
     "Comment": "Deny client access to RegisterPlayFabUser"
 }
 ```
-```
-{
-    "Action": "*",
-    "Effect": "Deny",
-    "Principal": "*",
-    "Resource": "pfrn:api--/Client/RegisterPlayFabUser",
-    "Condition": {
-        "NumericLessThanEquals": {
-            "playfab/Request/ApiRequestsPerMinutePerUser": 10
-        }
-    },
-    "Comment": "Rate limit client access to RegisterPlayFabUser"
-}
-```
-```
-{
-    "Action": "*",
-    "Effect": "Deny",
-    "Principal": "*",
-    "Resource": "pfrn:api--/Client/RegisterPlayFabUser",
-    "Condition": {
-        "NumericLessThanEquals": {
-            "playfab/Request/ApiRequestsPerMinute": 10
-        }
-    },
-    "Comment": "Rate limit client access to RegisterPlayFabUser (globally)"
-}
-```
-**note:** I got those last two rate limit policies partially from ChatGPT, they might not be real.
+**note:** PlayFab Docs are garbage so these currently wont work
 ## Adding access policies
  - Open your title's dashboard
  - Click settings > Title settings
