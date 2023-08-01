@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 print("PlayFab Spammer made by, @.index | https://discord.gg/GSWSahAmVU")
 
-TITLE = "83BF3"
+TITLE = input("TitleId: ") # "83BF3" for tests
 COUNT = 5 # ~ 10K Users (with 16 cores) # (os.cpu_count() * 100 * COUNT will be result)
 CHARS = string.ascii_letters + string.digits
 URL = f"https://{TITLE}.playfabapi.com/Client/RegisterPlayFabUser"
