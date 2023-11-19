@@ -27,10 +27,5 @@ On average this should create 5000 accounts in 2 minutes if you have 16 CPU core
     "Comment": "Deny client access to RegisterPlayFabUser"
 }
 ```
-**note:** PlayFab Docs are garbage so these currently wont work
-## Adding access policies
- - Open your title's dashboard
- - Click settings > Title settings
- - API Features tab
- - Locate ENTITY GLOBAL TITLE POLICY
- - Insert new policies into the existing Policy JSON array
+To apply these policies see https://learn.microsoft.com/en-us/gaming/playfab/api-references/api-access-policy#api-access-policy-example
+You will need to write code to apply the policies.
