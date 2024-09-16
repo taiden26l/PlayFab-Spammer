@@ -15,7 +15,7 @@ def spam():
     for i in range(COUNT):
         RAND = ''.join(random.choice(CHARS) for _ in range(8))
         DATA = {
-            "TitleId": TITLE,
+            "1170": TITLE,
             "Username": RAND,
             "Password": PASS + RAND,
             "RequireBothUsernameAndEmail": False,
